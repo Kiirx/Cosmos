@@ -711,7 +711,8 @@ namespace Cosmos.Core {
                 PutErrorString(2, 0, aName);
                 PutErrorString(3, 0, aDescription);
 
-                if (lastKnownAddressValue != 0) {
+                if (lastKnownAddressValue != 0)
+                {
                     PutErrorString(1, 0, "Last known address: 0x");
 
                     PutErrorChar(1, 22, xHex[(int)((lastKnownAddressValue >> 28) & 0xF)]);
@@ -722,13 +723,21 @@ namespace Cosmos.Core {
                     PutErrorChar(1, 27, xHex[(int)((lastKnownAddressValue >> 8) & 0xF)]);
                     PutErrorChar(1, 28, xHex[(int)((lastKnownAddressValue >> 4) & 0xF)]);
                     PutErrorChar(1, 29, xHex[(int)(lastKnownAddressValue & 0xF)]);
+
                 }
 
+                PutErrorString(5, 0, "Registers:");
+                PutErrorString(6, 0, $"EIP: 0x{xPtr}");
+                PutErrorString(7, 0, $"EBP: 0x{ctx.EBP} ESP: 0x{ctx.ESP}");
+                PutErrorString(8, 0, $"ESI: 0x{ctx.ESI} EDI: 0x{ctx.EDI}");
+                PutErrorString(9, 0, $"EDX: 0x{ctx.EDX} ECX: 0x{ctx.ECX}");
+                PutErrorString(10, 0, $"EBX: 0x{ctx.EBX} EAX: 0x{ctx.EAX}");
+                PutErrorString(11, 0, $"EDI: 0x{ctx.EDI} CS: 0x{ctx.CS}");
+                PutErrorString(13, 0, $"Interrupt: 0x{ctx.Interrupt} Param: 0x{ctx.Param}");
             }
 
             // lock up
-            while (true) {
-            }
+            while (true) { }
         }
 
         /// <summary>
