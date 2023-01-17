@@ -1,15 +1,14 @@
-using System;
-using System.Text;
+using Cosmos.HAL;
 using IL2CPU.API.Attribs;
 
-namespace Cosmos.System {
-    static public class Boot {
-        [BootEntry(40)]
-        static private void Init() {
-        }
+namespace Cosmos.System;
 
-        static public void TempDebugTest() {
-            HAL.Globals.DeviceMgr.Processor.SetOption(1);
-        }
+public static class Boot
+{
+    [BootEntry(40)]
+    private static void Init()
+    {
     }
+
+    public static void TempDebugTest() => Globals.DeviceMgr.Processor.SetOption(1);
 }
